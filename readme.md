@@ -1,4 +1,4 @@
-#Alexa Kings Cup Skill
+# Alexa Kings Cup Skill
 
 ## Background and Overview
   The development of Alexa skills, and the use of Amazon Web Services is an emerging skill set which many employers seek. In addition to being a desired, and employable skill there is a large lack of quality interactive group games within the Alexa skills shop. A demand exist for quality entertainment with what is becoming a household item.
