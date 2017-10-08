@@ -1,0 +1,10 @@
+{
+  "name": "kingsCup",
+  "version": "0.0.1",
+  "main": "index.js",
+  "dependencies": {
+    "alexa-app": "*",
+    "chatskills": "*",
+    "readline-sync": "*"
+  }
+}
