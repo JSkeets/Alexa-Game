@@ -63,4 +63,9 @@
   - Find other users to test the game, and get their feedback.
 
 ## Plan for getting users and reviews
-  Users will be acquired largely through word of mouth through the App Academy network. The game will also be spread throughout social media, and friends and family will be encouraged to try the game and review it on the Amazon skill store. 
+  Users will be acquired largely through word of mouth through the App Academy network. The game will also be spread throughout social media, and friends and family will be encouraged to try the game and review it on the Amazon skill store.
+
+## VUI
+Below is a rough VUI (voice user interface) diagram
+
+<img src="docs/VUI.jpg" />
