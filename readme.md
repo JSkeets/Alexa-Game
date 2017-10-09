@@ -69,3 +69,9 @@
 Below is a rough VUI (voice user interface) diagram
 
 <img src="docs/VUI.jpg" />
+
+## Wireframe 
+
+We are considering using gifs, chatbots, and a video as potential formats to demo the project on a website. The site will also link to the game in the Alexa skills store so that people can download and start playing immediately.
+
+![](https://raw.githubusercontent.com/JSkeets/Alexa-Game/master/kingscup.png)
