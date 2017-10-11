@@ -4,6 +4,7 @@
   "main": "index.js",
   "dependencies": {
     "alexa-app": "*",
+    "alexa-app-server": "^3.0.1",
     "chatskills": "*",
     "readline-sync": "*"
   }
