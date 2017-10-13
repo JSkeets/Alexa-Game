@@ -38,30 +38,21 @@ var cards = {
 
 kingsCup.launch(function(req, res) {
 	// Store cards in a session
+res.session("cards", cards);
+	var Speech = require('ssml-builder');
 
-	res.session("cards", cards);
-
-	// Welcome the user
-	res.say("Welcome to King's Cup. How many players are there?");
+	var speech = new Speech()
+	  .say('Welcome To Kings Cup!. To draw a card say draw')
+		.audio('https://s3.us-east-2.amazonaws.com/alexakingscup/yakety.mp3')
+	// change 'true' to 'false' if you want to include the surrounding <speak/> tag
+	var speechOutput = speech.ssml(true);
+	res.say(speechOutput);
 	res.shouldEndSession(false);
 });
 
 kingsCup.sessionEnded(function(req, res) {
 	res.say("Thanks for playing!");
 });
-
-// Create an intent.
-kingsCup.intent(
-	"StartIntent",
-	{
-		slots: { numPlayers: "NUMPLAYERS" },
-		utterances: ["{there |}{are|is|} {-|numPlayers}"]
-	},
-	function(req, res) {
-		res.say(`Okay there are ${req.slot("numPlayers")} is that correct?`);
-		res.shouldEndSession(false);
-	}
-);
 
 kingsCup.intent(
 	"NextCardIntent",
@@ -77,16 +68,38 @@ kingsCup.intent(
 		card[randCard].numCards -= 1;
 
 		if (card[randCard].numCards === 0 && randCard !== "king") {
-			res.say(`You drew a ${randCard} and its ${response}`);
+			var Speech = require('ssml-builder');
+
+			var speech = new Speech()
+			  .say(`You drew a ${randCard} and its ${response}`)
+				.audio('https://s3.amazonaws.com/my-ssml-samples/Flourish.mp3')
+			// change 'true' to 'false' if you want to include the surrounding <speak/> tag
+			var speechOutput = speech.ssml(true);
+			res.say(speechOutput);
 			res.shouldEndSession(false);
 			delete card[randCard];
 			res.session("cards", card);
 		} else if (randCard === "king" && card[randCard].numCards === 0) {
-			res.say(`You drew a ${randCard} and its the last King! DRINK THE CUP!`);
+			var Speech = require('ssml-builder');
+
+			var speech = new Speech()
+			  .say(`You drew a ${randCard} and its the last King! DRINK THE CUP!`)
+				.audio('https://s3.amazonaws.com/my-ssml-samples/Flourish.mp3')
+			// change 'true' to 'false' if you want to include the surrounding <speak/> tag
+			var speechOutput = speech.ssml(true);
+			res.say(speechOutput);
 			delete card[randCard];
 			res.session("cards", card);
+
 		} else {
-			res.say(`You drew a ${randCard} and its ${response}`);
+			var Speech = require('ssml-builder');
+
+			var speech = new Speech()
+			  .say(`You drew a ${randCard} and its ${response}`)
+				.audio('https://s3.amazonaws.com/my-ssml-samples/Flourish.mp3')
+			// change 'true' to 'false' if you want to include the surrounding <speak/> tag
+			var speechOutput = speech.ssml(true);
+			res.say(speechOutput);
 			res.session("cards", card);
 			res.shouldEndSession(false);
 		}

@@ -6,6 +6,7 @@
     "alexa-app": "*",
     "alexa-app-server": "^3.0.1",
     "chatskills": "*",
-    "readline-sync": "*"
+    "readline-sync": "*",
+    "ssml-builder": "^0.3.0"
   }
 }
