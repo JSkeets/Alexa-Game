@@ -21,18 +21,18 @@ var kingsCup = new alexa.app("kingscup");
 // ];
 
 var cards = {
-	// ace: { numCards: 4, response: "Waterfall" },
-	// two: { numCards: 4, response: "You" },
-	// three: { numCards: 4, response: "Me" },
-	// four: { numCards: 4, response: "Floor" },
-	// five: { numCards: 4, response: "Jive" },
-	// six: { numCards: 4, response: "Chicks" },
-	// seven: { numCards: 4, response: "Heaven" },
-	// eight: { numCards: 4, response: "Mate" },
-	// nine: { numCards: 4, response: "Rhyme" },
-	// ten: { numCards: 4, response: "Categories" },
+	ace: { numCards: 1, response: "Waterfall" },
+	two: { numCards: 1, response: "You" },
+	three: { numCards: 1, response: "Me" },
+	four: { numCards: 1, response: "Floor" },
+	five: { numCards: 1, response: "Jive" },
+	six: { numCards: 1, response: "Chicks" },
+	seven: { numCards: 1, response: "Heaven" },
+	eight: { numCards: 1, response: "Mate" },
+	nine: { numCards: 1, response: "Rhyme" },
+	ten: { numCards: 1, response: "Categories" },
 	jack: { numCards: 1, response: "Men" },
-	queen: { numCards: 2, response: "Question Master" },
+	queen: { numCards: 1, response: "Question Master" },
 	king: { numCards: 2, response: "Rule Maker" }
 };
 
@@ -40,10 +40,15 @@ kingsCup.launch(function(req, res) {
 	// Store cards in a session
 res.session("cards", cards);
 	var Speech = require('ssml-builder');
+	var choices = [ "https://s3.us-east-2.amazonaws.com/alexakingscup/Alexa20thCenturyFlute.mp3",
+									"https://s3.us-east-2.amazonaws.com/alexakingscup/yakety.mp3",
+									"https://s3.us-east-2.amazonaws.com/alexakingscup/AlexaJurassicParkFlute.mp3"];
+	var randSound = choices[Math.floor(Math.random()*choices.length)];
+
 
 	var speech = new Speech()
 	  .say('Welcome To Kings Cup!. To draw a card say draw')
-		.audio('https://s3.us-east-2.amazonaws.com/alexakingscup/yakety.mp3')
+		.audio(`${randSound}`)
 	// change 'true' to 'false' if you want to include the surrounding <speak/> tag
 	var speechOutput = speech.ssml(true);
 	res.say(speechOutput);
