@@ -1,78 +1,75 @@
-# Alexa Kings Cup Skill
+# Alexa Kings Cup
 
-## Background and Overview
-  The development of Alexa skills, and the use of Amazon Web Services is an emerging skill set which many employers seek. In addition to being a desired, and employable skill there is a large lack of quality interactive group games within the Alexa skills shop. A demand exist for quality entertainment with what is becoming a household item.
+Alexa Kings Cup is a social hydration game based on the popular party game King's Cup.
 
-## Functionality and MVP
-  - Users can initiate the skill with a wake word
-  - The game will keep track of the cards for each session
-  - Rules will be associated with each card
-  - At any time users can ask for further clarification for a card rule.
-  - Skill will keep track of which players turn it is.
-  - Game will be published on the alexa skills marketplace.
-  ### Bonus Features
-  - Additional games such as
-    - Power Hour
-    - Dice
+<img src="docs/amazon-echo.jpg" />
 
-## Technologies
-  - Node.js
-  - JavaScript
-  - AWS
-  - SSML
-  - CSS
-  - HTML
+## Features
 
-## Technological Challenges
-  Although an Alexa skill is largely written in JavaScript the entire syntax is very unusual and different. Members of the team will have to familiarize themselves with this new skillset, and become familiar with node.js
+* Initiate skill with wake word.
+* Users can verbally ask for a card.
+* Alexa will respond with card rules and associated sound effect or music.
+* Players can ask for help if clarification is needed.
 
-  Amazon will host an Alexa skill on their cloud if it set up on Amazon Web Services, which is an unfamiliar program. Although learning amazon web services is the largest value of this project as it is an employable skill.
+## Technology
 
-  Effectively demoing the Alexa skill is going to be a difficult challenge.
+This skill was created using the AWS platform.
 
-## Accomplished over the weekend
-  - All members of the team have gone through a tutorial in the construction of an Alexa skill
-  - All members have set up Amazon developer accounts.
-  - All members have begun reading documentation on Node.js, and working through tutorials
+* [Alexa Skills Kit](https://developer.amazon.com/alexa-skills-kit) was implemented to create the skill.
 
-## Group Members & Work Breakdown
+```{
+  "intents": [
+    {
+      "name": "AMAZON.CancelIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.HelpIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.StartOverIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.StopIntent",
+      "samples": []
+    },
+    {
+      "name": "NextCardIntent",
+      "samples": [
+        "draw",
+        "next",
+        "draw card",
+        "next card"
+      ],
+      "slots": []
+    }
+  ]
+}
+```
 
- ### Day 1
-  - Construct intent schema
-  - Finalize VUI
-  - Seed database with audio samples for game usage
-  - Ensure all team members were successful in their AWS set up over the weekend
- ### Day 2
-  - Begin node setup - Alex
-  - Begin demo page setup - Rachel
-  - Construct game logic - Jesse
- ### Day 3
-  - Complete game logic, and have a playable game from alexa-app-server using JSON - Jesse
-  - Verify schedule for the rest of the week
-  - Work on Amazon Lambda Function for hosting of skill - Rachel
-  - Ensure Node.js server is compatible with
-   amazon lambda function hosting - Alex
-  - All members will thoroughly test the program and create command phrases the ensure robust skill.
-  ### Day 5
-  - Complete hosting of skill on Amazon skill store - Alex
-  - Begin work on demo of skill - Jesse
-  - Finalize demo page - Rachel
-  - Thoroughly test the skill to predict possible user inputs.
-  ### Day 6
-  - Finalize any remaining outstanding issues
-  - Find other users to test the game, and get their feedback.
+* [AWS Lambda](https://aws.amazon.com/lambda/?sc_channel=PS&sc_campaign=pac_ps_q4&sc_publisher=google&sc_medium=lambda_b_pac_q42017&sc_content=lambda_e&sc_detail=aws%20lambda&sc_category=lambda&sc_segment=webp&sc_matchtype=e&sc_county=US&sc_geo=namer&sc_outcome=pac&s_kwcid=AL!4422!3!224596727998!e!!g!!aws%20lambda&ef_id=VkJSCQAABCdrUXCk:20171015223725:s) was used to host our code.
 
-## Plan for getting users and reviews
-  Users will be acquired largely through word of mouth through the App Academy network. The game will also be spread throughout social media, and friends and family will be encouraged to try the game and review it on the Amazon skill store.
+```
+kingsCup.launch(function(req, res) {
+  res.session("cards", cards);
+  var Speech = require("ssml-builder");
+  var choices = [
+    "https://s3.us-east-2.amazonaws.com/alexakingscup/Alexa20thCenturyFlute.mp3",
+    "https://s3.us-east-2.amazonaws.com/alexakingscup/yakety.mp3",
+    "https://s3.us-east-2.amazonaws.com/alexakingscup/AlexaJurassicParkFlute.mp3"
+  ];
+  var randSound = choices[Math.floor(Math.random() * choices.length)];
+  var speech = new Speech()
+    .say("Welcome To Kings Cup!. To draw a card say next or draw")
+    .audio(`${randSound}`);
+  var speechOutput = speech.ssml(true);
+  res.say(speechOutput);
+  res.shouldEndSession(false);
+});
+```
 
-## VUI
-Below is a rough VUI (voice user interface) diagram
+* [Node.js](https://nodejs.org/en/) was the language that we chose to write our code in, which allowed for seamless integration with AWS lambda. 
 
-<img src="docs/VUI.jpg" />
-
-## Wireframe 
-
-We are considering using gifs, chatbots, and a video as potential formats to demo the project on a website. The site will also link to the game in the Alexa skills store so that people can download and start playing immediately.
-
-
-![](https://raw.githubusercontent.com/JSkeets/Alexa-Game/master/kingscup.png)
+* The [alexa-app](https://github.com/alexa-js/alexa-app) node package was also used.

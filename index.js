@@ -8,7 +8,6 @@ var lastKing = {
 };
 
 kingsCup.launch(function(req, res) {
-  // Store cards in a session
   res.session("cards", cards);
   var Speech = require("ssml-builder");
   var choices = [
@@ -20,7 +19,6 @@ kingsCup.launch(function(req, res) {
   var speech = new Speech()
     .say("Welcome To Kings Cup!. To draw a card say next or draw")
     .audio(`${randSound}`);
-  // change 'true' to 'false' if you want to include the surrounding <speak/> tag
   var speechOutput = speech.ssml(true);
   res.say(speechOutput);
   res.shouldEndSession(false);
