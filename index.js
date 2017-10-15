@@ -5,19 +5,19 @@ var readlineSync = require("readline-sync");
 var kingsCup = new alexa.app("kingscup");
 
 var cards = {
-	ace: { numCards: 4, response: "Waterfall" },
-	two: { numCards: 4, response: "You" },
-	three: { numCards: 4, response: "Me" },
-	four: { numCards: 4, response: "Floor" },
-	five: { numCards: 4, response: "Jive" },
-	six: { numCards: 4, response: "Chicks" },
-	seven: { numCards: 4, response: "Heaven" },
-	eight: { numCards: 4, response: "Mate" },
-	nine: { numCards: 4, response: "Rhyme" },
-	ten: { numCards: 4, response: "Categories" },
-	jack: { numCards: 4, response: "Men" },
-	queen: { numCards: 4, response: "Question Master" },
-	king: { numCards: 5, response: "Rule Maker" }
+	ace: { numCards: 4, response: "Waterfall. Keep drinking until the person to right of you stops drinking." },
+	two: { numCards: 4, response: "You. Choose a person to take a drink!" },
+	three: { numCards: 4, response: "Me. Bummer you drew the card. You have to take a drink!" },
+	four: { numCards: 4, response: "Floor. QUICK GET ON THE FLOOR! LAST ONE ON THE FLOOR DRINKS!" },
+	five: { numCards: 4, response: "Jive. Show me your dance moves. Create one dance move, and the person to right must add on top of that until someone forgets" },
+	six: { numCards: 4, response: "Chicks. LADIES!!!!" },
+	seven: { numCards: 4, response: "Heaven. QUICK POINT UP. Last person to point up drinks!" },
+	eight: { numCards: 4, response: "Mate. Choose your drinking partner for the rest of the game." },
+	nine: { numCards: 4, response: "Rhyme. Okay rappers. Lets get our latest song going. Choose a word and next person rhymes with it until someone can't" },
+	ten: { numCards: 4, response: "Categories. Choose a category and each person must name an item in that category. First person to not name an item drinks" },
+	jack: { numCards: 4, response: "Men. GET DRINKING DUDES" },
+	queen: { numCards: 4, response: "Question Master. You are now the question master, until a new one is knighted. If someone answers your question they drink, if they call you out you drink." },
+	king: { numCards: 5, response: "Rule Maker. Make a rule everyone must follow for the rest of the game! Unless its the last king you drink the cup!" }
 };
 
 kingsCup.launch(function(req, res) {
