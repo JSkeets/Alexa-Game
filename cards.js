@@ -68,7 +68,7 @@ module.exports = {
     audio: "https://s3.us-east-2.amazonaws.com/alexakingscup/AlexaBruh.mp3"
   },
   queen: {
-    numCards: 4,
+    numCards: 1,
     response: "Question Master",
     audio: "https://s3.us-east-2.amazonaws.com/alexakingscup/yakety.mp3"
   },
@@ -78,10 +78,5 @@ module.exports = {
       "Rule Maker. Make a rule everyone must follow for the rest of the game! Unless its the last king you drink the cup!",
     audio:
       "https://s3.us-east-2.amazonaws.com/alexakingscup/AlexaLilJonYeah.mp3"
-  },
-  lastKing: {
-    response: "the last King! DRINK THE CUP!",
-    audio:
-      "https://s3.us-east-2.amazonaws.com/alexakingscup/AlexaSadTrombone.mp3"
   }
 };

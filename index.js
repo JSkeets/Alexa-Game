@@ -2,6 +2,11 @@ var alexa = require("alexa-app");
 var cards = require("./cards");
 var kingsCup = new alexa.app("kingscup");
 
+var lastKing = {
+  response: "the last King! DRINK THE CUP!",
+  audio: "https://s3.us-east-2.amazonaws.com/alexakingscup/AlexaSadTrombone.mp3"
+};
+
 kingsCup.launch(function(req, res) {
   // Store cards in a session
   res.session("cards", cards);
@@ -94,9 +99,9 @@ kingsCup.intent(
     var audioClip;
     var endSession;
 
-    if (randCard === "king" && card["king"].numCards === 1) {
-      response = card["lastKing"].response;
-      audioClip = card["lastKing"].audio;
+    if (card["king"].numCards === 1 && randCard === "king") {
+      response = lastKing.response;
+      audioClip = lastKing.audio;
       endSession = true;
     } else {
       response = card[randCard].response;
