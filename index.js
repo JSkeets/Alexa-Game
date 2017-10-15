@@ -13,7 +13,7 @@ kingsCup.launch(function(req, res) {
   ];
   var randSound = choices[Math.floor(Math.random() * choices.length)];
   var speech = new Speech()
-    .say("Welcome To Kings Cup!. To draw a card say next")
+    .say("Welcome To Kings Cup!. To draw a card say next or draw")
     .audio(`${randSound}`);
   // change 'true' to 'false' if you want to include the surrounding <speak/> tag
   var speechOutput = speech.ssml(true);
