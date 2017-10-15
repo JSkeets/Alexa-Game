@@ -90,11 +90,18 @@ kingsCup.intent(
         res.session("cards", card);
       }
     }
-    var response = card[randCard].response;
-    var audioClip = card[randCard].audio;
+    var response;
+    var audioClip;
+    var endSession;
+
     if (randCard === "king" && card["king"].numCards === 1) {
       response = card["lastKing"].response;
       audioClip = card["lastKing"].audio;
+      endSession = true;
+    } else {
+      response = card[randCard].response;
+      audioClip = card[randCard].audio;
+      endSession = false;
     }
     var Speech = require("ssml-builder");
     var speech = new Speech()
@@ -106,7 +113,7 @@ kingsCup.intent(
     var reprompt = "What would you like to do?";
     res.say(speechOutput);
     res.reprompt("HELLO");
-    res.shouldEndSession(false);
+    res.shouldEndSession(endSession);
 
     res.session("cards", card);
   }
