@@ -92,7 +92,7 @@ kingsCup.intent(
     }
     var response = card[randCard].response;
     var audioClip = card[randCard].audio;
-    if (randCard === "king" && card[randCard].numCards === 1) {
+    if (randCard === "king" && card["king"].numCards === 1) {
       response = card["lastKing"].response;
       audioClip = card["lastKing"].audio;
     }
