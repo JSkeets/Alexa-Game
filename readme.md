@@ -74,3 +74,7 @@ kingsCup.launch(function(req, res) {
 * [Node.js](https://nodejs.org/en/) was the language that we chose to write our code in, which allowed for seamless integration with AWS lambda. 
 
 * The [alexa-app](https://github.com/alexa-js/alexa-app) node package was also used.
+
+## Future Features 
+
+  * A DynamoDB backend to store the deck over multiple sessions
