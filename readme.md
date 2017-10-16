@@ -1,6 +1,7 @@
 # Alexa Kings Cup
 
 Alexa Kings Cup is a social hydration game based on the popular party game King's Cup.
+You can view our demo page [here!](http://alexakingscup.com/)
 
 <img src="docs/amazon-echo.jpg" />
 
